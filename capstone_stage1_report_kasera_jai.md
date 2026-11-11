@@ -1,7 +1,8 @@
 # **Math 546 Capstone Stage 1:** Bikeshare Forecasting Report
 
-  
 **Jai Kasera**
+
+**Code: [https://github.com/jaikasera2005/math-546-capstone-project](https://github.com/jaikasera2005/math-546-capstone-project)**
 
 ## Data and forecasting task
 
