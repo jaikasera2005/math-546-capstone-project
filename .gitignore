@@ -1,0 +1,5 @@
+.DS_Store
+capstone_stage1_*.csv
+
+capstone_support/snapshots/*
+!capstone_support/snapshots/bike.csv.gz

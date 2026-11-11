@@ -1,0 +1,133 @@
+{
+  "snapshot_date": "2026-09-28",
+  "checks": [
+    {
+      "dataset": "fred_md",
+      "rows": 780,
+      "columns": 126,
+      "missing_cells": 814,
+      "train_end": "1998-12-01 00:00:00",
+      "validation_end": "2011-12-01 00:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "bitcoin",
+      "rows": 1827,
+      "columns": 7,
+      "missing_cells": 2,
+      "train_end": "2022-12-31 00:00:00",
+      "validation_end": "2023-12-31 00:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "jena",
+      "rows": 70128,
+      "columns": 14,
+      "missing_cells": 1324,
+      "train_end": "2013-10-20 04:00:00",
+      "validation_end": "2015-05-27 14:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "electricity",
+      "rows": 26304,
+      "columns": 20,
+      "missing_cells": 0,
+      "train_end": "2013-10-19 13:00:00",
+      "validation_end": "2014-05-26 18:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "solar",
+      "rows": 3264,
+      "columns": 10,
+      "missing_cells": 1488,
+      "train_end": "2020-06-04 09:15:00",
+      "validation_end": "2020-06-11 04:30:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "beijing",
+      "rows": 35064,
+      "columns": 84,
+      "missing_cells": 17090,
+      "train_end": "2015-07-25 13:00:00",
+      "validation_end": "2016-05-12 18:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "pems_bay",
+      "rows": 52128,
+      "columns": 20,
+      "missing_cells": 240,
+      "train_end": "2017-04-19 14:15:00",
+      "validation_end": "2017-05-25 19:05:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "nyc_taxi",
+      "rows": 4344,
+      "columns": 5,
+      "missing_cells": 0,
+      "train_end": "2023-04-19 13:00:00",
+      "validation_end": "2023-05-25 18:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "ecg",
+      "rows": 650000,
+      "columns": 2,
+      "missing_cells": 0,
+      "train_end": "389999",
+      "validation_end": "519999",
+      "status": "PASS"
+    },
+    {
+      "dataset": "sunspots",
+      "rows": 309,
+      "columns": 1,
+      "missing_cells": 0,
+      "train_end": "1884-01-01 00:00:00",
+      "validation_end": "1946-01-01 00:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "retail",
+      "rows": 365,
+      "columns": 6,
+      "missing_cells": 0,
+      "train_end": "2011-07-07 00:00:00",
+      "validation_end": "2011-09-18 00:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "bike",
+      "rows": 731,
+      "columns": 12,
+      "missing_cells": 0,
+      "train_end": "2012-03-13 00:00:00",
+      "validation_end": "2012-08-06 00:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "wikipedia",
+      "rows": 3288,
+      "columns": 5,
+      "missing_cells": 0,
+      "train_end": "2021-05-25 00:00:00",
+      "validation_end": "2023-03-14 00:00:00",
+      "status": "PASS"
+    },
+    {
+      "dataset": "appliances",
+      "rows": 19735,
+      "columns": 20,
+      "missing_cells": 0,
+      "train_end": "2016-04-02 22:20:00",
+      "validation_end": "2016-04-30 08:10:00",
+      "status": "PASS"
+    }
+  ],
+  "notebook_code_cells_executed": 17,
+  "graph_alignment": "PASS"
+}

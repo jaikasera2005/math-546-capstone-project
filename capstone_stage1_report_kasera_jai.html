@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.13" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>capstone_stage1_report_kasera_jai</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
+      background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        color-scheme: light only;
+      }
+      html, body, pre, code {
+        background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
+        color: black;
+      }
+      pre, code {
+        padding: 0;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a, a:visited {
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
+      color: #606060;
+      color: light-dark(#606060, #b6b6b6);
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid currentColor;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+    th {
+      border-top: 1px solid currentColor;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1
+id="math-546-capstone-stage-1-bikeshare-forecasting-report"><strong>Math
+546 Capstone Stage 1:</strong> Bikeshare Forecasting Report</h1>
+<p><strong>Jai Kasera</strong></p>
+<h2 id="data-and-forecasting-task">Data and forecasting task</h2>
+<p>I use the bike dataset (<code>load_dataset("bike")</code>) to predict
+the number of rentals on each of the next seven days. The dataset has
+731 daily observations from January 2011 through December 2012, with no
+missing rental counts. These forecasts could help a bike-share operator
+plan staffing and bike rebalancing for the coming week.</p>
+<p>A forecast is made after the current day has ended, so the model can
+use past rental counts and future calendar information (day of week,
+holidays, and working days). It cannot** use actual future temperature,
+humidity, wind, or weather conditions. I also exclude
+<code>casual</code> and <code>registered</code>, which are components of
+the target <code>cnt</code>.</p>
+<p>I split the series chronologically, without shuffling:</p>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Dates</th>
+<th>Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training</td>
+<td>Jan. 1, 2011 – Mar. 13, 2012</td>
+<td>438</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>Mar. 14 – Aug. 6, 2012</td>
+<td>146</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Aug. 7 – Dec. 31, 2012</td>
+<td>147</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="capstone_stage1_assets/01_series_splits.png"
+alt="Daily rental counts and the chronological splits" />
+<figcaption aria-hidden="true">Daily rental counts and the chronological
+splits</figcaption>
+</figure>
+<h2 id="diagnostics-and-models">2. Diagnostics and models</h2>
+<p>Daily rentals show a changing level and strong weekly patterns. On
+the initial training data, autocorrelation is 0.634 at lag 7 and 0.597
+at lag 14. This suggests that the previous week’s rentals should be a
+useful baseline. Stationarity tests also motivate seasonal differencing:
+for the rental-count levels, the ADF test has <span
+class="math inline">\(p=0.3124\)</span> and KPSS has <span
+class="math inline">\(p\leq0.01\)</span>; after differencing at lag 7,
+ADF has <span class="math inline">\(p\approx3.1\times10^{-8}\)</span>
+and KPSS has <span class="math inline">\(p\geq0.10\)</span>. These tests
+support a weekly-differenced model but do not prove stationarity.</p>
+<figure>
+<img src="capstone_stage1_assets/02_diagnostics.png"
+alt="Training-series diagnostics" />
+<figcaption aria-hidden="true">Training-series diagnostics</figcaption>
+</figure>
+<p>I compare four forecasting approaches:</p>
+<ol type="1">
+<li><strong>Seasonal naive:</strong> Predict each day using the rental
+count from the same weekday one week earlier, <span
+class="math inline">\(\hat y_{t+h\mid t}=y_{t+h-7}\)</span>. This is the
+baseline.</li>
+<li><strong>ETS / Holt–Winters:</strong> Exponential smoothing with an
+additive trend, damped trend, and additive seven-day seasonality. It
+captures the weekly cycle while limiting long-run trend
+extrapolation.</li>
+<li><strong>SARIMA:</strong> <span
+class="math inline">\(\operatorname{SARIMA}(1,0,0)\times(1,1,0)_7\)</span>
+with an intercept. Weekly differencing addresses the apparent
+nonstationarity, and autoregressive terms capture serial
+dependence.</li>
+<li><strong>Direct Ridge regression:</strong> Seven regressions, one per
+forecast horizon, using observed rental lags, recent moving averages,
+and known calendar features. I compare penalties <span
+class="math inline">\(\alpha\in1,10,100\)</span> using validation data
+and select <span class="math inline">\(\alpha=10\)</span>.</li>
+</ol>
+<p>The models use only information available at each forecast origin. I
+did not train neural networks or transformers given the small dataset
+and the course’s emphasis on classical forecasting methods.</p>
+<h2 id="backtesting-and-results">3. Backtesting and results</h2>
+<p>I use expanding-window backtesting rather than a random train/test
+split. Every seven days, each model is refitted on data observed up to
+that date and forecasts the following seven days. This produces 20
+validation forecast origins (140 scored days) and 21 test origins (147
+scored days). Forecast targets never overlap within an evaluation
+period. The remaining six validation days are not scored but become past
+information by the first test origin.</p>
+<p>I select the model with the lowest validation MAE, then evaluate its
+frozen specification on the test period. MAE is the average absolute
+error in rentals per day, RMSE penalizes large errors more heavily, and
+WAPE expresses aggregate absolute error relative to total observed
+demand.</p>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr>
+<th>Model</th>
+<th>Validation MAE</th>
+<th>Test MAE</th>
+<th>Test RMSE</th>
+<th>Test WAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seasonal naive</td>
+<td>1,154.2</td>
+<td>1,194.7</td>
+<td>1,759.7</td>
+<td>20.3%</td>
+</tr>
+<tr>
+<td><strong>ETS (damped, weekly)</strong></td>
+<td><strong>921.1</strong></td>
+<td><strong>902.8</strong></td>
+<td><strong>1,349.6</strong></td>
+<td><strong>15.3%</strong></td>
+</tr>
+<tr>
+<td>SARIMA</td>
+<td>996.4</td>
+<td>1,010.5</td>
+<td>1,505.2</td>
+<td>17.1%</td>
+</tr>
+<tr>
+<td>Ridge (<span class="math inline">\(\alpha=10\)</span>)</td>
+<td>956.5</td>
+<td>1,200.7</td>
+<td>1,533.8</td>
+<td>20.4%</td>
+</tr>
+</tbody>
+</table>
+<p>ETS was selected on validation and also performed best on the test
+set. Its test MAE of 902.8 is 24.4% lower than the seasonal-naive
+benchmark. SARIMA also beats the baseline, but Ridge does not: its
+validation performance was promising, yet its test MAE increased to
+1,200.7. This is a reminder that adding features does not guarantee
+better out-of-sample forecasts. The ETS model overpredicted by 225.2
+rentals per day on average in the test period.</p>
+<figure>
+<img src="capstone_stage1_assets/04_test_forecasts.png"
+alt="Observed counts and rolling seven-day test forecasts" />
+<figcaption aria-hidden="true">Observed counts and rolling seven-day
+test forecasts</figcaption>
+</figure>
+<h2 id="uncertainty-and-forecast-errors">4. Uncertainty and forecast
+errors</h2>
+<p>For the selected ETS model, I construct nominal 90% prediction
+intervals using the distribution of absolute errors from validation. I
+calculate a separate error cutoff for each forecast horizon, then add
+and subtract it from the forecast, truncating the lower limit at zero.
+The cutoff is the 19th smallest absolute error from the 20 validation
+origins at each horizon. Test observations are not used to set interval
+widths.</p>
+<p>The intervals cover 91.2% of test rental counts and have an average
+width of 4,174.5 rentals. Although the observed coverage is near 90%,
+these intervals are quite wide, and 20 calibration examples per horizon
+are not enough to guarantee reliable coverage in every season or demand
+regime.</p>
+<figure>
+<img src="capstone_stage1_assets/05_test_intervals.png"
+alt="ETS forecasts with validation-based uncertainty intervals" />
+<figcaption aria-hidden="true">ETS forecasts with validation-based
+uncertainty intervals</figcaption>
+</figure>
+<p>ETS errors vary across groups. Its test MAE is 802.3 on weekdays
+versus 1,154.0 on weekends, and 1,826.8 on holidays (only five holiday
+observations). Error also increases with forecast horizon: 764.9 for
+days 1–3 versus 1,006.2 for days 4–7.</p>
+<p>The largest error occurred on October 29, 2012: the actual count was
+22, while ETS predicted <strong>6,793.4</strong>. The model captures
+typical weekly demand but cannot anticipate sudden disruptions from the
+past rental series alone. Since the dataset does not identify the cause
+of that drop, I cannot attribute it definitively to a particular
+event.</p>
+<h2 id="model-risks-and-conclusion">5. Model risks and conclusion</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr>
+<th>Risk</th>
+<th>How I addressed it / next step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Look-ahead leakage</strong></td>
+<td>Use only past observed rentals and known calendar features. Do not
+use future measured weather or target components.</td>
+</tr>
+<tr>
+<td><strong>Overfitting and test contamination</strong></td>
+<td>Select models and Ridge penalty on validation; keep the test period
+for final evaluation. Refit only on information available at each
+origin.</td>
+</tr>
+<tr>
+<td><strong>Demand shocks and changing patterns</strong></td>
+<td>Compare ongoing errors with seasonal naive, and review performance
+after unusual low-demand days or sustained degradation.</td>
+</tr>
+<tr>
+<td><strong>Uncertain interval calibration</strong></td>
+<td>Intervals use only 20 validation errors per horizon. Monitor
+empirical coverage and recalibrate with more observations.</td>
+</tr>
+<tr>
+<td><strong>Limited historical data</strong></td>
+<td>The sample spans only two years; results may not hold for other
+cities or more recent bike-sharing behavior.</td>
+</tr>
+</tbody>
+</table>
+<p>I recommend the weekly seasonal ETS model with a damped trend for
+this dataset. It is relatively simple, is supported by the observed
+weekly pattern, and has the lowest validation and test errors. I would
+retain seasonal naive as a benchmark and monitor whether ETS continues
+to outperform it. The main remaining limitation is unusual demand
+shocks, for which historical rental counts alone provide little
+warning.</p>
+</body>
+</html>
